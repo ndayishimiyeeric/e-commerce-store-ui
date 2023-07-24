@@ -1,1 +1,1 @@
-# e-commerce-store-frontend
+# E-commerce Store
