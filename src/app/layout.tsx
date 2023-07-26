@@ -8,6 +8,9 @@ import ToastProvider from "@/providers/toast-provider";
 
 const font = Urbanist({subsets: ['latin']});
 
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+
 export const metadata: Metadata = {
   title: 'Store',
   description: 'Ecommerce store.',

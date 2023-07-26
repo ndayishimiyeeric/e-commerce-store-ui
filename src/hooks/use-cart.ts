@@ -30,7 +30,6 @@ const usePreviewModal = create(
         },
         removeAllItems: () => {
             set({items: []})
-            toast.success("All items removed from cart");
         }
     }), {
         name: "cart-storage",

@@ -9,7 +9,8 @@ import NoResults from "@/components/NoResults";
 import ProductCard from "@/components/ProductCard";
 import MobileFilter from "@/components/filter/MobileFilter";
 
-export const revalidate = 0;
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 
 interface CategoryPageProps {
     params: {

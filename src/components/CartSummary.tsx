@@ -5,10 +5,11 @@ import Currency from "@/components/ui/Currency";
 import Button from "@/components/ui/Button";
 import useCart from "@/hooks/use-cart";
 import axios from "axios";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import toast from "react-hot-toast";
 
 const CartSummary = () => {
+    const [loading, setLoading] = useState<boolean>(false)
     const searchParams = useSearchParams()
     const items = useCart().items
     const removeAllItems = useCart().removeAllItems
@@ -21,14 +22,17 @@ const CartSummary = () => {
         if (searchParams.get("success")) {
             toast.success("Payment successful")
             removeAllItems()
+            setLoading(false)
         }
 
         if (searchParams.get("canceled")) {
             toast.error("Payment canceled")
+            setLoading(false)
         }
     }, [searchParams, removeAllItems])
 
     const checkout = async () => {
+        setLoading(true)
         const {data} = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
             productIds: items.map((item) => item.id)
         })
@@ -47,7 +51,7 @@ const CartSummary = () => {
                 </div>
             </div>
 
-            <Button className="w-full mt-6" onClick={checkout}>Checkout</Button>
+            <Button disabled={items.length === 0 || loading} className="w-full mt-6" onClick={checkout}>Checkout</Button>
         </div>
     )
 }
