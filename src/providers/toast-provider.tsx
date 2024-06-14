@@ -1,19 +1,17 @@
-"use client"
+"use client";
 
-import {useEffect, useState} from "react";
-import {Toaster} from "react-hot-toast";
+import { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 
 const ToastProvider = () => {
-    const [isMounted, setIsMounted] = useState<boolean>(false)
+  const [isMounted, setIsMounted] = useState<boolean>(false);
 
-    useEffect(() => {
-        setIsMounted(true)
-    }, [])
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-    if (!isMounted) return null
-    return (
-        <Toaster/>
-    )
-}
+  if (!isMounted) return null;
+  return <Toaster />;
+};
 
-export default ToastProvider
+export default ToastProvider;
